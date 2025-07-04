@@ -1,0 +1,30 @@
+{
+  "logs": [
+    {
+      "id": 1,
+      "cliente_id": 1,
+      "cliente_nome": "João Silva",
+      "tipo_mensagem": "aviso_3_dias",
+      "conteudo_enviado": "Oi João Silva! Seu plano Premium vence em 3 dias...",
+      "status": "enviada",
+      "data_envio": "2025-01-12T10:00:00",
+      "tentativas": 1,
+      "erro": null
+    },
+    {
+      "id": 2,
+      "cliente_id": 2,
+      "cliente_nome": "Maria Santos",
+      "tipo_mensagem": "vencimento",
+      "conteudo_enviado": "Olá Maria Santos! Sua VPN Básico vence hoje...",
+      "status": "enviada",
+      "data_envio": "2025-01-20T14:00:00",
+      "tentativas": 1,
+      "erro": null
+    }
+  ],
+  "total": 2,
+  "mes": "2025-07",
+  "ultima_atualizacao": "2025-07-04T14:55:01.565399",
+  "versao": "1.0"
+}
