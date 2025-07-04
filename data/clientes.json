@@ -1,0 +1,52 @@
+{
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "telefone": "5511999887766",
+      "tipo_produto": "IPTV",
+      "plano": "Premium",
+      "valor": 45.0,
+      "data_vencimento": "2025-01-15",
+      "horario_envio": "09:00",
+      "aviso_3_dias": true,
+      "horario_aviso_3_dias": "10:00",
+      "comentarios": "Cliente pontual, sempre renova",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159960"
+    },
+    {
+      "id": 2,
+      "nome": "Maria Santos",
+      "telefone": "5511888776655",
+      "tipo_produto": "VPN",
+      "plano": "Básico",
+      "valor": 25.0,
+      "data_vencimento": "2025-01-20",
+      "horario_envio": "14:00",
+      "aviso_3_dias": true,
+      "horario_aviso_3_dias": "15:00",
+      "comentarios": "Prefere pagamento via PIX",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159981"
+    },
+    {
+      "id": 3,
+      "nome": "Pedro Costa",
+      "telefone": "5511777665544",
+      "tipo_produto": "OUTROS",
+      "plano": "Personalizado",
+      "valor": 30.0,
+      "data_vencimento": "2025-01-25",
+      "horario_envio": "16:00",
+      "aviso_3_dias": false,
+      "horario_aviso_3_dias": "16:00",
+      "comentarios": "Cliente corporativo",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159984"
+    }
+  ],
+  "total": 3,
+  "ultima_atualizacao": "2025-07-04T14:54:58.860730",
+  "versao": "1.0"
+}
