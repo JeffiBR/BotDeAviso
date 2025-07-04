@@ -1,0 +1,52 @@
+{
+  "templates": [
+    {
+      "id": 1,
+      "nome": "Vencimento IPTV",
+      "tipo_produto": "IPTV",
+      "tipo_aviso": "vencimento",
+      "conteudo": "Olá {nome}! Seu plano {plano} vence hoje. Valor: R$ {valor}. Renove para continuar aproveitando!",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159986"
+    },
+    {
+      "id": 2,
+      "nome": "Aviso 3 dias IPTV",
+      "tipo_produto": "IPTV",
+      "tipo_aviso": "3_dias",
+      "conteudo": "Oi {nome}! Seu plano {plano} vence em 3 dias. Não esqueça de renovar! Valor: R$ {valor}",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159989"
+    },
+    {
+      "id": 3,
+      "nome": "Vencimento VPN",
+      "tipo_produto": "VPN",
+      "tipo_aviso": "vencimento",
+      "conteudo": "Olá {nome}! Sua VPN {plano} vence hoje. Renove por R$ {valor} para manter sua segurança online!",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159991"
+    },
+    {
+      "id": 4,
+      "nome": "Aviso 3 dias VPN",
+      "tipo_produto": "VPN",
+      "tipo_aviso": "3_dias",
+      "conteudo": "Oi {nome}! Sua VPN {plano} vence em 3 dias. Renove antecipadamente! Valor: R$ {valor}",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159992"
+    },
+    {
+      "id": 5,
+      "nome": "Vencimento Outros",
+      "tipo_produto": "OUTROS",
+      "tipo_aviso": "vencimento",
+      "conteudo": "Olá {nome}! Seu serviço {plano} vence hoje. Valor para renovação: R$ {valor}",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159994"
+    }
+  ],
+  "total": 5,
+  "ultima_atualizacao": "2025-07-04T14:54:59.514181",
+  "versao": "1.0"
+}
