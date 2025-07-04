@@ -1,0 +1,43 @@
+{
+  "configuracoes": {
+    "whatsapp": {
+      "ativo": false,
+      "intervalo_mensagens": 60,
+      "horario_inicio": "08:00",
+      "horario_fim": "22:00",
+      "dias_funcionamento": [
+        "segunda",
+        "terca",
+        "quarta",
+        "quinta",
+        "sexta",
+        "sabado"
+      ]
+    },
+    "ia": {
+      "ativa": true,
+      "provedor": "openrouter",
+      "api_key": "",
+      "modelo": "meta-llama/llama-3.1-8b-instruct:free",
+      "tom_voz": "profissional",
+      "personalidade": "assistente prestativo e educado",
+      "contexto_empresa": "empresa de serviços IPTV e VPN"
+    },
+    "sistema": {
+      "nome_empresa": "TechStream Pro",
+      "timezone": "America/Sao_Paulo",
+      "moeda": "BRL",
+      "formato_data": "DD/MM/YYYY",
+      "backup_automatico": true,
+      "logs_detalhados": true
+    },
+    "notificacoes": {
+      "email_admin": "",
+      "webhook_url": "",
+      "notificar_falhas": true,
+      "notificar_renovacoes": true
+    }
+  },
+  "ultima_atualizacao": "2025-07-04T14:55:00.128832",
+  "versao": "1.0"
+}
