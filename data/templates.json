@@ -44,9 +44,36 @@
       "conteudo": "Olá {nome}! Seu serviço {plano} vence hoje. Valor para renovação: R$ {valor}",
       "ativo": true,
       "data_criacao": "2025-07-04T14:54:58.159994"
+    },
+    {
+      "id": 6,
+      "nome": "Renovação Confirmada",
+      "tipo_produto": "GERAL",
+      "tipo_aviso": "confirmacao",
+      "conteudo": "Obrigado {nome}! Sua renovação foi confirmada. Novo vencimento: {nova_data}. Valor pago: R$ {valor}",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:55:38.365748"
+    },
+    {
+      "id": 7,
+      "nome": "Boas-vindas",
+      "tipo_produto": "GERAL",
+      "tipo_aviso": "boas_vindas",
+      "conteudo": "Bem-vindo(a) {nome}! Seu plano {plano} foi ativado. Vencimento: {data_vencimento}. Qualquer dúvida, estamos aqui!",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:55:38.365766"
+    },
+    {
+      "id": 8,
+      "nome": "Lembrete Personalizado",
+      "tipo_produto": "GERAL",
+      "tipo_aviso": "lembrete",
+      "conteudo": "Oi {nome}! Este é um lembrete personalizado sobre seu plano {plano}. Entre em contato se precisar de ajuda!",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:55:38.365769"
     }
   ],
-  "total": 5,
-  "ultima_atualizacao": "2025-07-04T14:54:59.514181",
+  "total": 8,
+  "ultima_atualizacao": "2025-07-04T14:55:38.675842",
   "versao": "1.0"
 }
