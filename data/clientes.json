@@ -44,9 +44,54 @@
       "comentarios": "Cliente corporativo",
       "ativo": true,
       "data_criacao": "2025-07-04T14:54:58.159984"
+    },
+    {
+      "id": 4,
+      "nome": "Ana Oliveira",
+      "telefone": "5511666554433",
+      "tipo_produto": "IPTV",
+      "plano": "Família",
+      "valor": 60.0,
+      "data_vencimento": "2025-01-30",
+      "horario_envio": "11:00",
+      "aviso_3_dias": true,
+      "horario_aviso_3_dias": "11:00",
+      "comentarios": "Cliente VIP - desconto especial",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:55:37.681822"
+    },
+    {
+      "id": 5,
+      "nome": "Carlos Mendes",
+      "telefone": "5511555443322",
+      "tipo_produto": "VPN",
+      "plano": "Premium",
+      "valor": 40.0,
+      "data_vencimento": "2025-02-05",
+      "horario_envio": "13:00",
+      "aviso_3_dias": true,
+      "horario_aviso_3_dias": "13:00",
+      "comentarios": "Usa para trabalho remoto",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:55:37.681843"
+    },
+    {
+      "id": 6,
+      "nome": "Fernanda Lima",
+      "telefone": "5511444332211",
+      "tipo_produto": "OUTROS",
+      "plano": "Streaming",
+      "valor": 35.0,
+      "data_vencimento": "2025-02-10",
+      "horario_envio": "15:00",
+      "aviso_3_dias": false,
+      "horario_aviso_3_dias": "15:00",
+      "comentarios": "Prefere WhatsApp apenas",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:55:37.681846"
     }
   ],
-  "total": 3,
-  "ultima_atualizacao": "2025-07-04T14:54:58.860730",
+  "total": 6,
+  "ultima_atualizacao": "2025-07-04T14:55:37.993523",
   "versao": "1.0"
 }
