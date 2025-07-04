@@ -1,0 +1,33 @@
+{
+  "renovacoes": [
+    {
+      "id": 1,
+      "cliente_id": 1,
+      "cliente_nome": "João Silva",
+      "data_renovacao": "2024-12-15",
+      "data_vencimento_anterior": "2024-12-15",
+      "nova_data_vencimento": "2025-01-15",
+      "dias_renovados": 30,
+      "valor_pago": 45.0,
+      "forma_pagamento": "PIX",
+      "observacoes": "Renovação pontual",
+      "data_criacao": "2025-07-04T14:54:58.160000"
+    },
+    {
+      "id": 2,
+      "cliente_id": 2,
+      "cliente_nome": "Maria Santos",
+      "data_renovacao": "2024-12-20",
+      "data_vencimento_anterior": "2024-12-20",
+      "nova_data_vencimento": "2025-01-20",
+      "dias_renovados": 30,
+      "valor_pago": 25.0,
+      "forma_pagamento": "PIX",
+      "observacoes": "Cliente fiel",
+      "data_criacao": "2025-07-04T14:54:58.160002"
+    }
+  ],
+  "total": 2,
+  "ultima_atualizacao": "2025-07-04T14:55:00.793239",
+  "versao": "1.0"
+}
