@@ -1,0 +1,24 @@
+{
+  "resumo": {
+    "total_clientes": 6,
+    "clientes_ativos": 6,
+    "total_templates": 8,
+    "templates_ativos": 8
+  },
+  "por_tipo_produto": {
+    "IPTV": 2,
+    "VPN": 2,
+    "OUTROS": 2
+  },
+  "receita_mensal": {
+    "IPTV": 105.0,
+    "VPN": 65.0,
+    "OUTROS": 65.0
+  },
+  "vencimentos_proximos": {
+    "hoje": 0,
+    "proximos_3_dias": 0,
+    "proximos_7_dias": 0
+  },
+  "ultima_atualizacao": "2025-07-04T14:55:39.171987"
+}
