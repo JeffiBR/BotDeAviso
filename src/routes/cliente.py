@@ -67,6 +67,12 @@ def criar_cliente():
         try:
             data_vencimento = datetime.strptime(dados['data_vencimento'], '%Y-%m-%d').date()
             horario_envio = datetime.strptime(dados['horario_envio'], '%H:%M').time()
+            
+            # Horário de aviso (opcional)
+            horario_aviso = None
+            if dados.get('horario_aviso'):
+                horario_aviso = datetime.strptime(dados['horario_aviso'], '%H:%M').time()
+                
         except ValueError:
             return jsonify({'erro': 'Formato de data/hora inválido'}), 400
         
@@ -88,8 +94,16 @@ def criar_cliente():
             horario_envio=horario_envio,
             template_mensagem_id=template_mensagem_id,
             mensagem_personalizada=dados.get('mensagem_personalizada'),
+            aviso_ativo=dados.get('aviso_ativo', True),
+            dias_aviso_antecedencia=dados.get('dias_aviso_antecedencia', 3),
+            horario_aviso=horario_aviso,
+            comentarios=dados.get('comentarios'),
             ativo=dados.get('ativo', True)
         )
+        
+        # Atualizar data do comentário se fornecido
+        if dados.get('comentarios'):
+            cliente.data_ultimo_comentario = datetime.utcnow()
         
         db.session.add(cliente)
         db.session.commit()
@@ -162,6 +176,26 @@ def atualizar_cliente(cliente_id):
         
         if 'ativo' in dados:
             cliente.ativo = dados['ativo']
+        
+        # Atualizar configurações de aviso
+        if 'aviso_ativo' in dados:
+            cliente.aviso_ativo = dados['aviso_ativo']
+        
+        if 'dias_aviso_antecedencia' in dados:
+            cliente.dias_aviso_antecedencia = dados['dias_aviso_antecedencia']
+        
+        if 'horario_aviso' in dados:
+            if dados['horario_aviso']:
+                try:
+                    cliente.horario_aviso = datetime.strptime(dados['horario_aviso'], '%H:%M').time()
+                except ValueError:
+                    return jsonify({'erro': 'Formato de horário de aviso inválido'}), 400
+            else:
+                cliente.horario_aviso = None
+        
+        # Atualizar comentários
+        if 'comentarios' in dados:
+            cliente.atualizar_comentario(dados['comentarios'])
         
         cliente.data_atualizacao = datetime.utcnow()
         db.session.commit()
@@ -305,5 +339,111 @@ def dashboard_clientes(tipo_produto):
         })
         
     except Exception as e:
+        return jsonify({'erro': str(e)}), 500
+
+@cliente_bp.route('/clientes/<int:cliente_id>/comentarios', methods=['PUT'])
+def atualizar_comentario_cliente(cliente_id):
+    """Atualiza apenas o comentário de um cliente"""
+    try:
+        cliente = Cliente.query.get_or_404(cliente_id)
+        dados = request.get_json()
+        
+        if 'comentarios' not in dados:
+            return jsonify({'erro': 'Campo comentarios é obrigatório'}), 400
+        
+        cliente.atualizar_comentario(dados['comentarios'])
+        db.session.commit()
+        
+        return jsonify({
+            'mensagem': 'Comentário atualizado com sucesso',
+            'comentarios': cliente.comentarios,
+            'data_ultimo_comentario': cliente.data_ultimo_comentario.isoformat() if cliente.data_ultimo_comentario else None
+        })
+        
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'erro': str(e)}), 500
+
+@cliente_bp.route('/clientes/<int:cliente_id>/comentarios', methods=['DELETE'])
+def deletar_comentario_cliente(cliente_id):
+    """Remove o comentário de um cliente"""
+    try:
+        cliente = Cliente.query.get_or_404(cliente_id)
+        
+        cliente.comentarios = None
+        cliente.data_ultimo_comentario = None
+        cliente.data_atualizacao = datetime.utcnow()
+        
+        db.session.commit()
+        
+        return jsonify({'mensagem': 'Comentário removido com sucesso'})
+        
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'erro': str(e)}), 500
+
+@cliente_bp.route('/clientes/avisos-pendentes', methods=['GET'])
+def clientes_avisos_pendentes():
+    """Retorna clientes que precisam receber avisos hoje"""
+    try:
+        from datetime import date, time
+        
+        hoje = date.today()
+        clientes_para_aviso = []
+        
+        # Buscar todos os clientes ativos
+        clientes = Cliente.query.filter_by(ativo=True).all()
+        
+        for cliente in clientes:
+            # Verificar se precisa de aviso de antecedência
+            if cliente.precisa_aviso_antecedencia() and not cliente.foi_renovado_recentemente():
+                if cliente.pode_enviar_mensagem():
+                    clientes_para_aviso.append({
+                        'cliente': cliente.to_dict(),
+                        'tipo_aviso': 'antecedencia',
+                        'dias_restantes': cliente.dias_para_vencimento(),
+                        'horario_envio': cliente.horario_aviso.strftime('%H:%M') if cliente.horario_aviso else cliente.horario_envio.strftime('%H:%M')
+                    })
+            
+            # Verificar se vence hoje
+            elif cliente.vence_hoje() and not cliente.foi_renovado_recentemente():
+                if cliente.pode_enviar_mensagem():
+                    clientes_para_aviso.append({
+                        'cliente': cliente.to_dict(),
+                        'tipo_aviso': 'vencimento',
+                        'dias_restantes': 0,
+                        'horario_envio': cliente.horario_envio.strftime('%H:%M')
+                    })
+        
+        # Ordenar por horário de envio
+        clientes_para_aviso.sort(key=lambda x: x['horario_envio'])
+        
+        return jsonify({
+            'clientes_para_aviso': clientes_para_aviso,
+            'total': len(clientes_para_aviso),
+            'data_processamento': hoje.isoformat()
+        })
+        
+    except Exception as e:
+        return jsonify({'erro': str(e)}), 500
+
+@cliente_bp.route('/clientes/marcar-mensagem-enviada/<int:cliente_id>', methods=['POST'])
+def marcar_mensagem_enviada(cliente_id):
+    """Marca que uma mensagem foi enviada para o cliente"""
+    try:
+        cliente = Cliente.query.get_or_404(cliente_id)
+        
+        cliente.ultima_mensagem_enviada = datetime.utcnow()
+        cliente.data_atualizacao = datetime.utcnow()
+        
+        db.session.commit()
+        
+        return jsonify({
+            'mensagem': 'Mensagem marcada como enviada',
+            'ultima_mensagem_enviada': cliente.ultima_mensagem_enviada.isoformat()
+        })
+        
+    except Exception as e:
+        db.session.rollback()
         return jsonify({'erro': str(e)}), 500
 

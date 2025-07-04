@@ -12,6 +12,7 @@ from src.routes.template_mensagem import template_mensagem_bp
 from src.routes.configuracao import configuracao_bp
 from src.routes.log_mensagem import log_mensagem_bp
 from src.routes.renovacao import renovacao_bp
+from src.routes.whatsapp import whatsapp_bp
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
@@ -26,6 +27,7 @@ app.register_blueprint(template_mensagem_bp, url_prefix='/api')
 app.register_blueprint(configuracao_bp, url_prefix='/api')
 app.register_blueprint(log_mensagem_bp, url_prefix='/api')
 app.register_blueprint(renovacao_bp, url_prefix='/api')
+app.register_blueprint(whatsapp_bp, url_prefix='/api')
 
 # Configuração do banco de dados
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
