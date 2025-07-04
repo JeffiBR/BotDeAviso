@@ -1,0 +1,170 @@
+{
+  "backup_info": {
+    "data_criacao": "2025-07-04T14:55:02.540909",
+    "versao_sistema": "1.0",
+    "total_clientes": 3,
+    "total_templates": 5,
+    "total_renovacoes": 2
+  },
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "telefone": "5511999887766",
+      "tipo_produto": "IPTV",
+      "plano": "Premium",
+      "valor": 45.0,
+      "data_vencimento": "2025-01-15",
+      "horario_envio": "09:00",
+      "aviso_3_dias": true,
+      "horario_aviso_3_dias": "10:00",
+      "comentarios": "Cliente pontual, sempre renova",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159960"
+    },
+    {
+      "id": 2,
+      "nome": "Maria Santos",
+      "telefone": "5511888776655",
+      "tipo_produto": "VPN",
+      "plano": "Básico",
+      "valor": 25.0,
+      "data_vencimento": "2025-01-20",
+      "horario_envio": "14:00",
+      "aviso_3_dias": true,
+      "horario_aviso_3_dias": "15:00",
+      "comentarios": "Prefere pagamento via PIX",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159981"
+    },
+    {
+      "id": 3,
+      "nome": "Pedro Costa",
+      "telefone": "5511777665544",
+      "tipo_produto": "OUTROS",
+      "plano": "Personalizado",
+      "valor": 30.0,
+      "data_vencimento": "2025-01-25",
+      "horario_envio": "16:00",
+      "aviso_3_dias": false,
+      "horario_aviso_3_dias": "16:00",
+      "comentarios": "Cliente corporativo",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159984"
+    }
+  ],
+  "templates": [
+    {
+      "id": 1,
+      "nome": "Vencimento IPTV",
+      "tipo_produto": "IPTV",
+      "tipo_aviso": "vencimento",
+      "conteudo": "Olá {nome}! Seu plano {plano} vence hoje. Valor: R$ {valor}. Renove para continuar aproveitando!",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159986"
+    },
+    {
+      "id": 2,
+      "nome": "Aviso 3 dias IPTV",
+      "tipo_produto": "IPTV",
+      "tipo_aviso": "3_dias",
+      "conteudo": "Oi {nome}! Seu plano {plano} vence em 3 dias. Não esqueça de renovar! Valor: R$ {valor}",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159989"
+    },
+    {
+      "id": 3,
+      "nome": "Vencimento VPN",
+      "tipo_produto": "VPN",
+      "tipo_aviso": "vencimento",
+      "conteudo": "Olá {nome}! Sua VPN {plano} vence hoje. Renove por R$ {valor} para manter sua segurança online!",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159991"
+    },
+    {
+      "id": 4,
+      "nome": "Aviso 3 dias VPN",
+      "tipo_produto": "VPN",
+      "tipo_aviso": "3_dias",
+      "conteudo": "Oi {nome}! Sua VPN {plano} vence em 3 dias. Renove antecipadamente! Valor: R$ {valor}",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159992"
+    },
+    {
+      "id": 5,
+      "nome": "Vencimento Outros",
+      "tipo_produto": "OUTROS",
+      "tipo_aviso": "vencimento",
+      "conteudo": "Olá {nome}! Seu serviço {plano} vence hoje. Valor para renovação: R$ {valor}",
+      "ativo": true,
+      "data_criacao": "2025-07-04T14:54:58.159994"
+    }
+  ],
+  "renovacoes": [
+    {
+      "id": 1,
+      "cliente_id": 1,
+      "cliente_nome": "João Silva",
+      "data_renovacao": "2024-12-15",
+      "data_vencimento_anterior": "2024-12-15",
+      "nova_data_vencimento": "2025-01-15",
+      "dias_renovados": 30,
+      "valor_pago": 45.0,
+      "forma_pagamento": "PIX",
+      "observacoes": "Renovação pontual",
+      "data_criacao": "2025-07-04T14:54:58.160000"
+    },
+    {
+      "id": 2,
+      "cliente_id": 2,
+      "cliente_nome": "Maria Santos",
+      "data_renovacao": "2024-12-20",
+      "data_vencimento_anterior": "2024-12-20",
+      "nova_data_vencimento": "2025-01-20",
+      "dias_renovados": 30,
+      "valor_pago": 25.0,
+      "forma_pagamento": "PIX",
+      "observacoes": "Cliente fiel",
+      "data_criacao": "2025-07-04T14:54:58.160002"
+    }
+  ],
+  "configuracoes": {
+    "whatsapp": {
+      "ativo": false,
+      "intervalo_mensagens": 60,
+      "horario_inicio": "08:00",
+      "horario_fim": "22:00",
+      "dias_funcionamento": [
+        "segunda",
+        "terca",
+        "quarta",
+        "quinta",
+        "sexta",
+        "sabado"
+      ]
+    },
+    "ia": {
+      "ativa": true,
+      "provedor": "openrouter",
+      "api_key": "",
+      "modelo": "meta-llama/llama-3.1-8b-instruct:free",
+      "tom_voz": "profissional",
+      "personalidade": "assistente prestativo e educado",
+      "contexto_empresa": "empresa de serviços IPTV e VPN"
+    },
+    "sistema": {
+      "nome_empresa": "TechStream Pro",
+      "timezone": "America/Sao_Paulo",
+      "moeda": "BRL",
+      "formato_data": "DD/MM/YYYY",
+      "backup_automatico": true,
+      "logs_detalhados": true
+    },
+    "notificacoes": {
+      "email_admin": "",
+      "webhook_url": "",
+      "notificar_falhas": true,
+      "notificar_renovacoes": true
+    }
+  }
+}
