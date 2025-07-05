@@ -1,1 +1,58 @@
+# Frontend
 frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/build/
+
+# Backend
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.env
+.venv/
+*.db
+*.sqlite
+*.sqlite3
+
+# Database
+src/database/app.db
+data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files
+*.tmp
+*.temp
+
+# Coverage
+coverage/
+.coverage
+.nyc_output/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/

@@ -1,0 +1,21 @@
+{
+  "name": "sistema-vencimento",
+  "version": "1.0.0",
+  "description": "Sistema de Aviso de Vencimento - Frontend e Backend",
+  "scripts": {
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "pip install -r requirements.txt",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd src && python main.py",
+    "build:frontend": "cd frontend && npm run build",
+    "deploy:check": "echo 'Verificando configuração de deploy...' && cat netlify.toml && cat render.yaml",
+    "setup": "npm run install:frontend && npm run install:backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SeuUsuario/sistema-vencimento.git"
+  },
+  "keywords": ["flask", "react", "vencimento", "whatsapp"],
+  "author": "Seu Nome",
+  "license": "MIT"
+}

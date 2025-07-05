@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: sistema-vencimento-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python src/main.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_APP
+        value: src/main.py
+      - key: PORT
+        value: 5000

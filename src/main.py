@@ -15,7 +15,7 @@ from src.routes.renovacao import renovacao_bp
 from src.routes.whatsapp import whatsapp_bp
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
-app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'asdf#FGSgvasgf$5$WGT')
 
 # Configurar CORS para permitir requisições do frontend
 CORS(app, origins=['*'])
@@ -30,7 +30,11 @@ app.register_blueprint(renovacao_bp, url_prefix='/api')
 app.register_blueprint(whatsapp_bp, url_prefix='/api')
 
 # Configuração do banco de dados
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
@@ -78,6 +82,11 @@ with app.app_context():
             print(f"Erro ao inicializar configurações: {e}")
             db.session.rollback()
 
+# Rota para verificar se a API está funcionando
+@app.route('/health')
+def health_check():
+    return {'status': 'OK', 'message': 'API está funcionando!'}
+
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
@@ -96,4 +105,5 @@ def serve(path):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=os.environ.get('FLASK_ENV') != 'production')
